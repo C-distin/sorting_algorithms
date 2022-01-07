@@ -13,9 +13,9 @@
  */
 typedef struct listint_s
 {
-    const int n;
-    struct listint_s *prev;
-    struct listint_s *next;
+	const int n;
+	struct listint_s *prev;
+	struct listint_s *next;
 } listint_t;
 
 /* Print Array */
@@ -26,5 +26,8 @@ void print_list(const listint_t *list);
 
 /* Bubble sort */
 void bubble_sort(int *array, size_t size);
+
+/* Selection sort */
+void selection_sort(int *array, size_t size);
 
 #endif /* __SORT_H__ */
