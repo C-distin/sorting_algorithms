@@ -2,6 +2,9 @@
 
 /**
  * bubble_sort - sorts a doubly linked list of integers
+ *
+ * @array - array of integers
+ * @size - size of array
  */
 void bubble_sort(int *array, size_t size)
 {
