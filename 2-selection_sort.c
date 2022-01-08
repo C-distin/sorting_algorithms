@@ -3,8 +3,8 @@
 /**
  * selection_sort - sorts a linked list of integers
  *
- * @array - array of integers
- * @size - size of array
+ * @array: array of integers
+ * @size: size of array
  */
 void selection_sort(int *array, size_t size)
 {
