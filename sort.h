@@ -30,4 +30,12 @@ void bubble_sort(int *array, size_t size);
 /* Selection sort */
 void selection_sort(int *array, size_t size);
 
+/*  header files for  quick sort. and insection sort */
+void insertion_sort_list(listint_t **list);
+void quicksort_recursion(int array[], int low, int high);
+void quick_sort(int *array, size_t size);
+void swap(int *x, int *y);
+int partition(int array[], int low, int high);
+
+
 #endif /* __SORT_H__ */
