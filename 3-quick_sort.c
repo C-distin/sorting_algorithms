@@ -1,12 +1,15 @@
 #include "sort.h"
-void quicksort_recursion(int array[], int low, int high);
+#include <stdlib.h>
+#include <time.h>
+
 /**
  * quick_sort - sorts an array of integers in ascending order using
  * @array: the list of values to be sorted
- * @size:  size of hte list
+ * @size:  size of the list
 */
 void quick_sort(int *array, size_t size)
 {
+	srand(time(NULL));
 	quicksort_recursion(array, 0, size - 1);
 }
 
@@ -49,8 +52,12 @@ void quicksort_recursion(int array[], int low, int high)
 */
 int partition(int array[], int low, int high)
 {
+	int pivot_index = low + (rand() % (high - low));
 	int pivot_value = array[high];
 	int i = low, j;
+
+	if (pivot_index != high)
+		swap(&array[pivot_index], &array[high]);
 
 	for (j = low; j < high; j++)
 	{
