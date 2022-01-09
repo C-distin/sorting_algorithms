@@ -10,7 +10,7 @@ void quick_sort(int *array, size_t size)
 {
 	if (size == 0 || size == 1)
 		return;
-	quicksort_recursion(array, 0, size - 1);
+	quicksort_recursion(array, 0, size - 1, size);
 }
 
 /**
@@ -31,16 +31,18 @@ void swap(int *x, int *y)
  * @array: list to work on
  * @low: start point
  * @high: max at which we can traverse
+ * @s: for displayint
 */
 
-void quicksort_recursion(int array[], int low, int high)
+void quicksort_recursion(int array[], int low, int high, size_t s)
 {
+
 	if (low < high)
 	{
-		int pivot_index = partition(array, low, high);
+		int pivot_index = partition(array, low, high, s);
 
-		quicksort_recursion(array, low, pivot_index - 1);
-		quicksort_recursion(array, pivot_index + 1, high);
+		quicksort_recursion(array, low, pivot_index - 1, s);
+		quicksort_recursion(array, pivot_index + 1, high, s);
 	}
 }
 /**
@@ -49,8 +51,9 @@ void quicksort_recursion(int array[], int low, int high)
  * @low: starting point
  * @high: -
  * Return: the index
+* @s: for displayint
 */
-int partition(int array[], int low, int high)
+int partition(int array[], int low, int high, size_t s)
 {
 	int pivot_value = array[high];
 	int i = low, j;
@@ -63,7 +66,9 @@ int partition(int array[], int low, int high)
 			swap(&array[i], &array[j]);
 			i++;
 		}
+
 	}
 	swap(&array[i], &array[high]);
+	print_array(array, s);
 	return (i);
 }
