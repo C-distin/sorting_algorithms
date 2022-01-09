@@ -1,74 +1,76 @@
 #include "sort.h"
 
-
 /**
- * quick_sort - sorts an array of integers in ascending order using
- * @array: the list of values to be sorted
- * @size:  size of the list
-*/
-void quick_sort(int *array, size_t size)
-{
-	if (size == 0 || size == 1)
-		return;
-	quicksort_recursion(array, 0, size - 1, size);
-}
-
-/**
- * swap - swap two values
- * @x: first value
- * @y: second value
+ * partition - this partitions the array and swaps
+ * @array: input array
+ * @low: input low index
+ * @high: input high index
+ * @size: input size of array
+ * Return: return the partioned index
  */
-
-void swap(int *x, int *y)
+int partition(int *array, int low, int high, size_t size)
 {
-	int tmp = *x;
-	*x = *y;
-	 *y = tmp;
+	int pivot, holder, i, j;
+
+	pivot = array[high];
+	i = low - 1;
+	j = low;
+	while (j < high)
+	{
+		if (array[j] <= pivot)
+		{
+			i++;
+			if (i != j)
+			{
+				holder = array[i];
+				array[i] = array[j];
+				array[j] = holder;
+				print_array(array, size);
+			}
+		}
+		j++;
+	}
+	if (pivot < array[i + 1])
+	{
+		holder = array[i + 1];
+		array[i + 1] = array[high];
+		array[high] = holder;
+		print_array(array, size);
+	}
+	return (i + 1);
 }
 
 /**
- * quicksort_recursion - apply portion of the quicksort algorithm
- * @array: list to work on
- * @low: start point
- * @high: max at which we can traverse
- * @s: for displayint
-*/
-
-void quicksort_recursion(int array[], int low, int high, size_t s)
+ * sorting - sorting the array using recursion
+ * @array: input array
+ * @low: input low index
+ * @high: input high index
+ * @size: input size of array
+ */
+void sorting(int *array, int low, int high, size_t size)
 {
+	int part;
 
 	if (low < high)
 	{
-		int pivot_index = partition(array, low, high, s);
-
-		quicksort_recursion(array, low, pivot_index - 1, s);
-		quicksort_recursion(array, pivot_index + 1, high, s);
+		part = partition(array, low, high, size);
+		sorting(array, low, part - 1, size);
+		sorting(array, part + 1, high, size);
 	}
 }
+
 /**
- * partition - partitions the array pivot value and returns
- * @array: list for the values
- * @low: starting point
- * @high: -
- * Return: the index
-* @s: for displayint
-*/
-int partition(int array[], int low, int high, size_t s)
+ * quick_sort - sory array using quick sort method
+ * @array: input array
+ * @size: input size of array
+ */
+void quick_sort(int *array, size_t size)
 {
-	int pivot_value = array[high];
-	int i = low, j;
+	size_t low, high;
 
-
-	for (j = low; j < high; j++)
-	{
-		if (array[j] <= pivot_value)
-		{
-			swap(&array[i], &array[j]);
-			i++;
-		}
-
-	}
-	swap(&array[i], &array[high]);
-	print_array(array, s);
-	return (i);
+	if (size == 0 || size == 1)
+		return;
+	low = 0;
+	high = size - 1;
+	sorting(array, low, high, size);
 }
