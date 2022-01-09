@@ -32,10 +32,10 @@ void selection_sort(int *array, size_t size);
 
 /*  header files for  quick sort. and insection sort */
 void insertion_sort_list(listint_t **list);
-void quicksort_recursion(int array[], int low, int high);
+void quicksort_recursion(int array[], int low, int high, size_t s);
 void quick_sort(int *array, size_t size);
 void swap(int *x, int *y);
-int partition(int array[], int low, int high);
+int partition(int array[], int low, int high, size_t print);
 
 
 #endif /* __SORT_H__ */
