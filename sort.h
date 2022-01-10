@@ -37,5 +37,8 @@ void quick_sort(int *array, size_t size);
 void swap(int *x, int *y);
 int partition(int array[], int low, int high, size_t print);
 
+/* Shell sort */
+void shell_sorting_function(int *array, int size, int gap);
+void shell_sort(int *array, size_t size);
 
 #endif /* __SORT_H__ */
